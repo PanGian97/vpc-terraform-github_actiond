@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg_alb" {
-  name        = "sg-alb"
+  name        = "sg_alb"
   description = "Allow HTTP, SSH inbound traffic for load balancer"
   vpc_id      = var.vpc_id
 
@@ -32,7 +32,7 @@ depends_on = [ var.vpc_id]
   }
 }
 resource "aws_security_group" "sg_pri" {
-  name        = "sg-pri"
+  name        = "sg_pri"
   description = "Allow HTTP, SSH inbound traffic from load balancer"
   vpc_id      = var.vpc_id
 

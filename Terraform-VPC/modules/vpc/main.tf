@@ -33,11 +33,7 @@ resource "aws_subnet" "pri_subnets" {
   }
 }
 
-# Elastic-IP (eip) for NAT
-resource "aws_eip" "nat_eip" {
-  vpc = true
-  depends_on = [aws_internet_gateway.id]
-}
+
 
 # Internet Gateway
 resource "aws_internet_gateway" "igw" {
@@ -46,6 +42,10 @@ resource "aws_internet_gateway" "igw" {
   tags = {
     Name = "MyInternetGateway"
   }
+}
+# Elastic-IP (eip) for NAT
+resource "aws_eip" "nat_eip" {
+  depends_on = [aws_internet_gateway.igw]
 }
 # NAT
 resource "aws_nat_gateway" "nat" {
