@@ -3,9 +3,7 @@ name: Terraform CI CD Pipeline for Deleting AWS Resources
 run-name: ${{ github.actor }} has triggered the pipeline
 
 on:
-  push:
-    branches:
-      - 'main'
+  workflow_dispatch:
 
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
