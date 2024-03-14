@@ -22,7 +22,11 @@ jobs:
         id: init
         run: terraform init
         working-directory: ./Terraform-VPC
+      - name: Terraform Plan Destroy
+        run: terraform plan -destroy
+        working-directory: ./Terraform-VPC
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
+        working-directory: ./Terraform-VPC
         env:
           TF_LOG: DEBUG
